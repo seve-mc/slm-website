@@ -26,13 +26,36 @@
 
     <main>
       <section class="section">
-        <div class="container about-grid">
-          <div>
-            <h2 class="section-title">Images from previous customers</h2>
-            <p class="section-intro about-summary">
-              This page is ready for your customer photos. Add before/after images here whenever
-              you are ready.
-            </p>
+        <div class="container">
+          <h2 class="section-title">Images from previous customers</h2>
+          <p class="section-intro about-summary">
+            A look at some of our recent garden maintenance work.
+          </p>
+          <div class="image-carousel" data-carousel>
+            <div class="image-carousel-viewport">
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow--prev"
+                aria-label="Previous image"
+              >
+                ‹
+              </button>
+              <div class="carousel-track">
+                <figure class="carousel-slide is-active">
+                  <img
+                    src="assets/IMG_4486-001adc9c-b337-4fd5-adc2-8682638aba3a.png"
+                    alt="Well-maintained striped lawn from a recent customer"
+                  />
+                </figure>
+              </div>
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow--next"
+                aria-label="Next image"
+              >
+                ›
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -44,6 +67,7 @@
         <a href="#top" class="back-to-top">Back to top ↑</a>
       </div>
     </footer>
+    <script src="script.js"></script>
   </body>
   </html>
 

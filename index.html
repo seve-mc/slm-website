@@ -56,15 +56,23 @@
           <p class="section-intro">
             Everthing you need to keep your garden tidy and ready to enjoy
           </p>
-          <div class="services-grid services-grid--pair">
-            <a href="contact.html?service=lawn" class="card service-card service-card--centered">
-              <h3>Lawn Maintenance</h3>
-              <p class="service-card-subtitle">Service to keep your lawn looking neat and tidy.</p>
-            </a>
-            <a href="contact.html?service=hedge" class="card service-card service-card--centered">
-              <h3>Hedge Trimming / Reduction</h3>
-              <p class="service-card-subtitle">Keep hedges neat, shaped, and at a manageable height.</p>
-            </a>
+          <div class="services-layout">
+            <div class="services-grid services-grid--pair">
+              <a href="contact.html?service=lawn" class="card service-card service-card--centered">
+                <h3>Lawn Maintenance</h3>
+                <p class="service-card-subtitle">Service to keep your lawn looking neat and tidy.</p>
+              </a>
+              <a href="contact.html?service=hedge" class="card service-card service-card--centered">
+                <h3>Hedge Trimming / Reduction</h3>
+                <p class="service-card-subtitle">Keep hedges neat, shaped, and at a manageable height.</p>
+              </a>
+            </div>
+            <div class="services-grid services-grid--single">
+              <a href="contact.html?service=clearance" class="card service-card service-card--centered">
+                <h3>Garden Clearance</h3>
+                <p class="service-card-subtitle">Garden clearance for a fresh start in your garden to get it back to manageable.</p>
+              </a>
+            </div>
           </div>
           <p class="pricing-footnote">
             Final pricing depends on garden size and condition. Request a free on‑site quote and
@@ -75,13 +83,23 @@
 
       <section class="section section-alt" id="pricing">
         <div class="container">
-          <a href="planters.html" class="pricing-logo-box">
-            <img
-              src="assets/planter-trellis.png"
-              alt="Handmade wooden planter box"
-              class="pricing-logo"
-            />
+          <a href="planters.html" class="pricing-logo-box" data-planter-slideshow>
+            <div class="pricing-logo-frame">
+              <img
+                src="assets/planter-privacy-wall-1.png"
+                alt="Handmade wooden planter box with privacy board"
+                class="pricing-logo is-active"
+                data-planter-slide
+              />
+              <img
+                src="assets/planter-medium-1.png"
+                alt="Handmade medium wooden planter box"
+                class="pricing-logo"
+                data-planter-slide
+              />
+            </div>
             <span class="pricing-logo-label">Garden Planters</span>
+            <span class="pricing-logo-price" data-planter-price>£90</span>
           </a>
         </div>
       </section>

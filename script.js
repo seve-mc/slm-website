@@ -121,6 +121,14 @@ function initContactPage() {
         "Lakeside, Swindon area only",
       ],
     },
+    clearance: {
+      title: "Request a free quote for garden clearance",
+      points: [
+        "Garden clearance for a fresh start in your garden",
+        "Get it back to manageable",
+        "Lakeside, Swindon area only",
+      ],
+    },
   };
 
   const service = new URLSearchParams(window.location.search).get("service");
@@ -129,8 +137,18 @@ function initContactPage() {
   titleEl.textContent = content.title;
   pointsEl.innerHTML = content.points.map((point) => `<li>${point}</li>`).join("");
 
+  if (service === "lawn") {
+    const imageEl = document.getElementById("contact-service-image");
+    if (imageEl) imageEl.hidden = false;
+    document.title = "Request a Lawn Maintenance Quote • SLM Garden Maintenance";
+  }
+
   if (service === "hedge") {
     document.title = "Request a Hedge Work Quote • SLM Garden Maintenance";
+  }
+
+  if (service === "clearance") {
+    document.title = "Request a Garden Clearance Quote • SLM Garden Maintenance";
   }
 }
 
@@ -155,9 +173,9 @@ function initOrderPage() {
       `Planter with a built-in trellis, perfect for climbing plants and adding height to your garden.\n\n${timberNote}`,
     "Small planter box":
       `Compact handmade planter for smaller spaces and patios.\n\n${timberNote}`,
-    "Medium planter":
+    "Medium planter box":
       `Versatile medium-sized planter for gardens, patios, and driveways.\n\n${timberNote}`,
-    "Big planter":
+    "Big planter box":
       `Larger planter with extra depth for bigger displays and more root space.\n\n${timberNote}`,
     "Flower box for privacy wall":
       "Small flower box that attaches to the privacy wall planter for extra planting.",
@@ -167,6 +185,8 @@ function initOrderPage() {
       "Durable hard wearing wheels to make moving your planters that little bit easier.",
     "Compost for planters":
       "Quality compost supplied to suit the size of your planter.",
+    "Liner for planter":
+      "To prolong the life of the planter even longer, add this breathable membrane that lets water escape and lowers the chance of rotting.",
   };
 
   const params = new URLSearchParams(window.location.search);
@@ -213,6 +233,64 @@ function initOrderPage() {
   }
 }
 
+function initPlanterSlideshow() {
+  const box = document.querySelector("[data-planter-slideshow]");
+  if (!box) return;
+
+  const slideEls = box.querySelectorAll("[data-planter-slide]");
+  const priceEl = box.querySelector("[data-planter-price]");
+  if (slideEls.length < 2) return;
+
+  const slides = [
+    {
+      src: "assets/planter-privacy-wall-1.png",
+      alt: "Handmade wooden planter box with privacy board",
+      price: "£90",
+    },
+    {
+      src: "assets/planter-medium-1.png",
+      alt: "Handmade medium wooden planter box",
+      price: "£50",
+    },
+    {
+      src: "assets/planter-small-1.png",
+      alt: "Handmade small wooden planter box",
+      price: "£40",
+    },
+  ];
+
+  slides.forEach((slide) => {
+    const preload = new Image();
+    preload.src = slide.src;
+  });
+
+  let index = 0;
+  let showFirst = true;
+
+  const updatePrice = (price) => {
+    if (!priceEl) return;
+    priceEl.textContent = price;
+  };
+
+  const showSlide = (nextIndex) => {
+    const nextSlide = slides[nextIndex];
+    const incoming = showFirst ? slideEls[1] : slideEls[0];
+    const outgoing = showFirst ? slideEls[0] : slideEls[1];
+
+    incoming.src = nextSlide.src;
+    incoming.alt = nextSlide.alt;
+    incoming.classList.add("is-active");
+    outgoing.classList.remove("is-active");
+    updatePrice(nextSlide.price);
+    showFirst = !showFirst;
+  };
+
+  setInterval(() => {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }, 15000);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const yearEl = document.getElementById("year");
   if (yearEl) {
@@ -222,5 +300,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initCarousels();
   initContactPage();
   initOrderPage();
+  initPlanterSlideshow();
 });
 

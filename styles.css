@@ -480,14 +480,31 @@ a.service-card:focus-visible {
   text-align: center;
 }
 
+.pricing-boxes {
+  display: grid;
+  grid-template-columns: repeat(2, 720px);
+  justify-content: center;
+  align-items: start;
+  column-gap: 3rem;
+  row-gap: 2rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+#pricing .container {
+  max-width: 1680px;
+  width: 100%;
+}
+
 .pricing-logo-box {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: min(100%, 720px);
+  box-sizing: border-box;
+  width: 720px;
   height: 620px;
-  margin: 1.5rem auto 0;
+  margin: 0;
   padding: 0;
   overflow: hidden;
   border-radius: 16px;
@@ -498,6 +515,10 @@ a.service-card:focus-visible {
   cursor: pointer;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast),
     border-color var(--transition-fast);
+}
+
+.pricing-logo-box--text {
+  background: radial-gradient(circle at top, rgba(220, 252, 231, 0.85), #ffffff 70%);
 }
 
 .pricing-logo-box:hover {
@@ -758,6 +779,27 @@ a.service-card:focus-visible {
   margin-top: 1.5rem;
 }
 
+.planters-layout .planters-menu--additional {
+  margin-top: 1.5rem;
+}
+
+.planters-layout .planters-intro {
+  min-height: 3.2rem;
+}
+
+.sheds-log-stores-section {
+  margin-top: 3rem;
+}
+
+.sheds-log-stores-section .planters-section-title {
+  margin-top: 0;
+  text-align: left;
+}
+
+.sheds-log-stores-section .planters-menu {
+  margin-top: 1.5rem;
+}
+
 .planters-menu {
   display: flex;
   flex-direction: column;
@@ -780,6 +822,7 @@ a.service-card:focus-visible {
   flex-direction: row-reverse;
   align-items: center;
   gap: 0.75rem;
+  min-height: 7.5rem;
   padding: 1rem 1.1rem;
   border-radius: 12px;
   border: 1px solid rgba(22, 163, 74, 0.35);
@@ -840,11 +883,16 @@ a.service-card:focus-visible {
   color: var(--accent-dark);
 }
 
-.planters-menu-price {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-top: 0.25rem;
+.planters-menu-item--unavailable {
+  cursor: default;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.planters-menu-item--unavailable .planters-menu-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
 }
 
 .order-back-link {
@@ -917,6 +965,7 @@ a.service-card:focus-visible {
   padding: 2.1rem 2rem 2rem;
 }
 
+.order-card h2,
 .order-card h3 {
   font-size: 1.35rem;
 }
@@ -1016,6 +1065,7 @@ a.service-card:focus-visible {
   text-align: center;
 }
 
+.contact-form h2,
 .contact-form h3 {
   margin: 0 0 0.9rem;
 }
@@ -1072,6 +1122,53 @@ a.service-card:focus-visible {
   gap: 1rem;
   font-size: 0.85rem;
   color: var(--muted);
+}
+
+.footer-seo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.footer-seo p {
+  margin: 0;
+}
+
+.footer-contact a {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+}
+
+.footer-nav a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .footer-qr {
@@ -1131,6 +1228,23 @@ html {
 
   .pricing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pricing-boxes {
+    grid-template-columns: minmax(0, 720px);
+    justify-content: center;
+    column-gap: 0;
+    row-gap: 2rem;
+  }
+
+  #pricing .container {
+    width: 100%;
+    max-width: 1120px;
+  }
+
+  .pricing-logo-box {
+    width: min(100%, 720px);
+    height: 620px;
   }
 
   .about-grid {

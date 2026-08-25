@@ -137,18 +137,35 @@ function initContactPage() {
   titleEl.textContent = content.title;
   pointsEl.innerHTML = content.points.map((point) => `<li>${point}</li>`).join("");
 
+  const setMetaDescription = (text) => {
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", text);
+  };
+
   if (service === "lawn") {
     const imageEl = document.getElementById("contact-service-image");
     if (imageEl) imageEl.hidden = false;
-    document.title = "Request a Lawn Maintenance Quote • SLM Garden Maintenance";
+    document.title =
+      "Lawn Maintenance Quote | SLM Garden Maintenance Lakeside, Swindon";
+    setMetaDescription(
+      "Request a lawn maintenance quote in Lakeside, Swindon. Weekly mowing and edging. Call or text 07769 091 748."
+    );
   }
 
   if (service === "hedge") {
-    document.title = "Request a Hedge Work Quote • SLM Garden Maintenance";
+    document.title =
+      "Hedge Trimming Quote | SLM Garden Maintenance Lakeside, Swindon";
+    setMetaDescription(
+      "Request a hedge trimming or reduction quote in Lakeside, Swindon. Call or text 07769 091 748."
+    );
   }
 
   if (service === "clearance") {
-    document.title = "Request a Garden Clearance Quote • SLM Garden Maintenance";
+    document.title =
+      "Garden Clearance Quote | SLM Garden Maintenance Lakeside, Swindon";
+    setMetaDescription(
+      "Request a garden clearance quote in Lakeside, Swindon. Call or text 07769 091 748."
+    );
   }
 }
 
@@ -162,6 +179,13 @@ function initOrderPage() {
   const textLinkEl = document.getElementById("order-text-link");
 
   if (!titleEl) return;
+
+  const backLinkEl = document.getElementById("order-back-link");
+  const from = new URLSearchParams(window.location.search).get("from");
+  if (backLinkEl && from === "bin-sheds") {
+    backLinkEl.href = "bin-sheds.html";
+    backLinkEl.textContent = "← Back to bin sheds / log stores";
+  }
 
   const timberNote =
     "Handmade garden planter made with a very high quality treated timber - built to last outdoors.";
@@ -181,12 +205,26 @@ function initOrderPage() {
       "Small flower box that attaches to the privacy wall planter for extra planting.",
     "Natural stain":
       "Natural Danish oil to protect and prolong the life of the wood giving it a classy finish.",
+    "Hook for blue bag 1":
+      "Wall-mounted hook for hanging a blue recycling bag on your bin shed.",
+    "Hook for blue bag 2":
+      "Screw-in hook for hanging a blue recycling bag on your bin shed.",
     "Wheels for planters":
       "Durable hard wearing wheels to make moving your planters that little bit easier.",
     "Compost for planters":
       "Quality compost supplied to suit the size of your planter.",
     "Liner for planter":
       "To prolong the life of the planter even longer, add this breathable membrane that lets water escape and lowers the chance of rotting.",
+    "Bin shed with 2 boxes":
+      "Handmade bin shed with 2 boxes to keep your wheelie bins neat, tidy, and screened from view.",
+    "Bin shed with 3 boxes":
+      "Handmade bin shed with 3 boxes for wheelie bins — neat storage that keeps your front garden looking tidy.",
+    "Bin shed with 4 boxes":
+      "Handmade bin shed with 4 boxes for wheelie bins, built to keep bins organised and out of sight.",
+    "Log store":
+      "Sturdy log store to keep firewood dry, ventilated, and ready to use.",
+    "Large log store":
+      "Larger log store with extra capacity for stacking more firewood while keeping it dry.",
   };
 
   const params = new URLSearchParams(window.location.search);
@@ -197,7 +235,16 @@ function initOrderPage() {
 
   if (item) {
     titleEl.textContent = item;
-    document.title = `${item} • SLM Garden Maintenance`;
+    document.title = `${item} | SLM Garden Maintenance Swindon`;
+    const desc =
+      (planterDescriptions[item] || "").replace(/\n+/g, " ").trim() ||
+      `Enquire about ${item} from SLM Garden Maintenance in Lakeside, Swindon. Call 07769 091 748.`;
+    const meta = document.getElementById("meta-description");
+    if (meta) meta.setAttribute("content", desc.slice(0, 160));
+    const ogTitle = document.getElementById("og-title");
+    if (ogTitle) ogTitle.setAttribute("content", `${item} | SLM Garden Maintenance`);
+    const ogDesc = document.getElementById("og-description");
+    if (ogDesc) ogDesc.setAttribute("content", desc.slice(0, 160));
   }
 
   if (descriptionEl) {

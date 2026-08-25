@@ -1,0 +1,12 @@
+---
+description: SEO conventions for the SLM website
+alwaysApply: true
+---
+
+# SEO
+
+- New pages must ship with full SEO: unique title, meta description, canonical, robots, Open Graph, Twitter cards, favicon/manifest, and appropriate JSON-LD.
+- When page content changes (services, products, prices, copy, images, contact, hours, location), update related SEO and `sitemap.xml` in the same change.
+- Base URL: `https://www.slmgardens.co.uk`. Use Lakeside, Swindon in titles/descriptions where natural.
+- Order/enquire param pages: `noindex, follow`; canonical to the parent category page.
+- Keep plain `.html` links (e.g. `planters.html`) so the site works without a local server.

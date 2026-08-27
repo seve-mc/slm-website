@@ -205,10 +205,8 @@ function initOrderPage() {
       "Small flower box that attaches to the privacy wall planter for extra planting.",
     "Natural stain":
       "Natural Danish oil to protect and prolong the life of the wood giving it a classy finish.",
-    "Hook for blue bag 1":
-      "Wall-mounted hook for hanging a blue recycling bag on your bin shed.",
-    "Hook for blue bag 2":
-      "Screw-in hook for hanging a blue recycling bag on your bin shed.",
+    "Hook for blue bag":
+      "Screw-in hook for hanging a blue recycling bag on your bin shed. Free on request.",
     "Wheels for planters":
       "Durable hard wearing wheels to make moving your planters that little bit easier.",
     "Compost for planters":
